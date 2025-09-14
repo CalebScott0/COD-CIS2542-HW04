@@ -1,13 +1,13 @@
 #include "Oven.h"
 
-const int Oven::roomTemperature = 72;
-const int Oven::maxTemperature = 550;
-const int Oven::minTemperature = 200;
 
 Oven::Oven()
-    : currentTemperature(roomTemperature),
+    : currentTemperature(72),
       setTemperature(350),
-      isOvenOn(false)
+      isOvenOn(false),
+      roomTemperature(72),
+      maxTemperature(550),
+      minTemperature(200)
 {
     // Empty.
 }

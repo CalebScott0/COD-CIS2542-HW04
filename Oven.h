@@ -24,9 +24,9 @@ class Oven
         int setTemperature;
         bool isOvenOn;
 
-        static const int roomTemperature;
-        static const int maxTemperature;
-        static const int minTemperature;  
+        const int roomTemperature;
+        const int maxTemperature;
+        const int minTemperature;  
 };
 
 #endif
