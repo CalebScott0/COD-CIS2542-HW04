@@ -1,12 +1,12 @@
 #include "Oven.h"
 
 const int Oven::roomTemperature = 72;
-const int Oven::maxOvenTemperature = 550;
-const int Oven::minOvenTemperature = 200;
+const int Oven::maxTemperature = 550;
+const int Oven::minTemperature = 200;
 
 Oven::Oven()
-    : currentOvenTemperature(roomTemperature),
-      setOvenTemperature(350),
+    : currentTemperature(roomTemperature),
+      setTemperature(350),
       isOvenOn(false)
 {
     // Empty.
@@ -14,22 +14,22 @@ Oven::Oven()
 
 int Oven::GetCurrentTemperature() const
 {
-    return currentOvenTemperature;
+    return currentTemperature;
 }
 
 int Oven::GetSetTemperature() const
 {
-    return setOvenTemperature;
+    return setTemperature;
 }
 
 int Oven::GetMinimumTemperature() const
 {
-    return minOvenTemperature;
+    return minTemperature;
 }
 
 int Oven::GetMaximumTemperature() const
 {
-    return maxOvenTemperature;
+    return maxTemperature;
 }
 
 int Oven::GetRoomTemperature() const
@@ -44,20 +44,16 @@ bool Oven::IsOn() const
 
 void Oven::SetSetTemperature(int temperature)
 {
-    if(temperature <= maxOvenTemperature && temperature >= minOvenTemperature)
+    if(temperature <= maxTemperature && temperature >= minTemperature)
     {
-        setOvenTemperature = temperature;
+        setTemperature = temperature;
     }
 }
 
 void Oven::TurnOn(int temperature)
 {
-    if(temperature <= maxOvenTemperature && temperature >= minOvenTemperature)
-    {
-        setOvenTemperature = temperature;
-    }
-
     isOvenOn = true;
+    SetSetTemperature(temperature);
 }
 
 void Oven::TurnOff()
@@ -69,32 +65,19 @@ void Oven::SimulatePassingOfTime(int minutes)
 {
     if(isOvenOn)
     {
-        for(int i = 1; i <= minutes; ++i)
+        currentTemperature += (25 * minutes);
+        if(currentTemperature > setTemperature)
         {
-            if(currentOvenTemperature <= (setOvenTemperature - 25))
-            {
-                currentOvenTemperature += 25;
-            }
-            else // within 25 degrees of setOvenTempature
-            {
-                currentOvenTemperature = setOvenTemperature;
-                break;
-            }
+            currentTemperature = setTemperature;
         }
+            
     }
     else
     {
-        for(int i = 1; i <= minutes; ++i)
+        currentTemperature -= (15 * minutes);
+        if(currentTemperature < roomTemperature)
         {
-            if(currentOvenTemperature >= (roomTemperature + 15))
-            {
-                currentOvenTemperature -= 15;
-            }
-            else // within 15 degrees F of roomTemperature
-            {
-                currentOvenTemperature = roomTemperature;
-                break;
-            }
+            currentTemperature = roomTemperature;
         }
     }
 }

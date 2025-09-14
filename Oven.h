@@ -5,25 +5,29 @@ class Oven
 {
     public:
         Oven();
+
         int GetCurrentTemperature() const;
-        int GetSetTemperature() const;
-        void SetSetTemperature(int temperature);
-        void TurnOn(int temperature = 350);
-        void TurnOff();
-        bool IsOn() const;
-        int GetMinimumTemperature() const;
         int GetMaximumTemperature() const;
+        int GetMinimumTemperature() const;
         int GetRoomTemperature() const;
+        int GetSetTemperature() const;
+        bool IsOn() const;
+
+        void SetSetTemperature(int temperature);
         void SimulatePassingOfTime(int minutes);
         
-    private:
-        int currentOvenTemperature;
-        int setOvenTemperature;
-        bool isOvenOn;
-        static const int roomTemperature;
-        static const int maxOvenTemperature;
-        static const int minOvenTemperature;  
+        void TurnOff();
+        void TurnOn(int temperature = 350);
         
+    private:
+        int currentTemperature;
+        int setTemperature;
+        bool isOvenOn;
+
+        // TODO: is it bad to have these in mem as static?
+        static const int roomTemperature;
+        static const int maxTemperature;
+        static const int minTemperature;  
 };
 
 #endif
