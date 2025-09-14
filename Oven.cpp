@@ -65,12 +65,23 @@ void Oven::SimulatePassingOfTime(int minutes)
 {
     if(isOvenOn)
     {
-        currentTemperature += (25 * minutes);
-        if(currentTemperature > setTemperature)
+        if(currentTemperature < setTemperature)
         {
-            currentTemperature = setTemperature;
+            currentTemperature += (25 * minutes);
+            if(currentTemperature > setTemperature)
+            {
+                currentTemperature = setTemperature;
+            }
+        }            
+        else
+        {
+            currentTemperature -= (15 * minutes);
+            if(currentTemperature < setTemperature)
+            {
+                currentTemperature = setTemperature;
+            }
         }
-            
+
     }
     else
     {

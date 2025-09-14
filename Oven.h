@@ -24,7 +24,6 @@ class Oven
         int setTemperature;
         bool isOvenOn;
 
-        // TODO: is it bad to have these in mem as static?
         static const int roomTemperature;
         static const int maxTemperature;
         static const int minTemperature;  
