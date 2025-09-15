@@ -3,30 +3,30 @@
 
 class Oven
 {
-    public:
-        Oven();
+public:
+    Oven();
 
-        int GetCurrentTemperature() const;
-        int GetMaximumTemperature() const;
-        int GetMinimumTemperature() const;
-        int GetRoomTemperature() const;
-        int GetSetTemperature() const;
-        bool IsOn() const;
+    int GetCurrentTemperature() const;
+    int GetMaximumTemperature() const;
+    int GetMinimumTemperature() const;
+    int GetRoomTemperature() const;
+    int GetSetTemperature() const;
+    bool IsOn() const;
 
-        void SetSetTemperature(int temperature);
-        void SimulatePassingOfTime(int minutes);
-        
-        void TurnOff();
-        void TurnOn(int temperature = 350);
-        
-    private:
-        int currentTemperature;
-        int setTemperature;
-        bool isOvenOn;
+    void SetSetTemperature(int temperature);
+    void SimulatePassingOfTime(int minutes);
+    
+    void TurnOff();
+    void TurnOn(int temperature = 350);
+    
+private:
+    int currentTemperature;
+    int setTemperature;
+    bool isOvenOn;
 
-        const int roomTemperature;
-        const int maxTemperature;
-        const int minTemperature;  
+    const int roomTemperature;
+    const int maxTemperature;
+    const int minTemperature;  
 };
 
 #endif
